@@ -62,7 +62,7 @@
     }
     /*初始化数据*/
     Slider.prototype.init = function() {
-        this.scaleWidth = window.innerWidth;
+        this.scaleW = window.innerWidth;
         this.scaleHeight = window.innerWidth;
         this.idx = 0;
     };
@@ -80,7 +80,7 @@
             var item = data[i]
 
             li.style.width = window.innerWidth + 'px'
-            li.style.webkitTransform = 'translate3d(' + i * this.scaleWidth + 'px, 0 , 0)';
+            li.style.webkitTransform = 'translate3d(' + i * this.scaleW + 'px, 0 , 0)';
 
             if (item) {
                 li.innerHTML = '<img src="' + item['img'] + '" alt="" />'
@@ -88,9 +88,9 @@
             this.ul.appendChild(li)
         }
 
-        this.ul.style.width = this.scaleWidth + "px"
+        this.ul.style.width = this.scaleW + "px"
         wrap.style.height = window.innerHeight + 'px'
-        wrap.style.width = this.scaleWidth + 'px'
+        wrap.style.width = this.scaleW + 'px'
 
         wrap.appendChild(this.ul)
 
@@ -98,7 +98,7 @@
     //绑定事件 
     Slider.prototype.bindDom = function() {
         var self = this
-        var scaleWidth = self.scaleWidth
+        var scaleW = self.scaleW
         var ul = self.ul
         var len = self.list.length
 
@@ -131,7 +131,7 @@
                 //最小化改变DOM属性
                 for (i; i < m; i++) {
                     lis[i] && (lis[i].style.webkitTransition = '-webkit-transform 0s ease-out');
-                    lis[i] && (lis[i].style.webkitTransform = 'translate3d(' + ((i - self.idx) * self.scaleWidth + self.offsetX) + 'px, 0, 0)');
+                    lis[i] && (lis[i].style.webkitTransform = 'translate3d(' + ((i - self.idx) * self.scaleW + self.offsetX) + 'px, 0, 0)');
                 }
 
             }
@@ -140,7 +140,7 @@
             evt.preventDefault();
 
             //边界就翻页值
-            var boundary = scaleWidth / 6;
+            var boundary = scaleW / 6;
 
             //所有列表项
             var lis = ul.getElementsByTagName('li');
@@ -196,8 +196,8 @@
 
         //改变动画后所应该的位移值
         lis[cidx].style.webkitTransform = 'translate3d(0, 0, 0)';
-        lis[cidx - 1] && (lis[cidx - 1].style.webkitTransform = 'translate3d(-' + this.scaleWidth + 'px, 0, 0)');
-        lis[cidx + 1] && (lis[cidx + 1].style.webkitTransform = 'translate3d(' + this.scaleWidth + 'px, 0, 0)');
+        lis[cidx - 1] && (lis[cidx - 1].style.webkitTransform = 'translate3d(-' + this.scaleW + 'px, 0, 0)');
+        lis[cidx + 1] && (lis[cidx + 1].style.webkitTransform = 'translate3d(' + this.scaleW + 'px, 0, 0)');
     };
 
 
